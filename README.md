@@ -1,8 +1,8 @@
 # BlogAppWithDjango
 
 📄 Blog App is a project realized with python (Django) framework. This is a project carried out to strengthen knowledge with Django and Python, which contains several features such as:
-  1️⃣ User Login with authentication 
-  2️⃣ Django User Authentication
+1️⃣ User Login with authentication 
+2️⃣ Django User Authentication
   3️⃣ Escape HTML Syntax In Blog Post With safe
   4️⃣ Add New Blog Categories
   5️⃣ Add New BLog Categories Pages
@@ -29,6 +29,7 @@ The project contains some important features, also using the User build-in Djang
  💻 SQLite
  💻 HTML
  💻 CSS
+ 💻 JavaScript
  💻 Bootstrap 5
 
 Each user has the opportunity to register or open a new account, and then create his profile by uploading a photo and his data. The registered user has the right:
