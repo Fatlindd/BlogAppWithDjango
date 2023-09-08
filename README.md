@@ -43,7 +43,7 @@ Each user has the opportunity to register or open a new account, and then create
 ✅ to edit his profile<br/>
 ✅ to change the password of the account<br/>
 ✅ to like a post<br/>
-✅ unlink a post<br/>
+✅ to unlike a post<br/>
 ✅ to add a comment to a certain post<br/>
 ✅ to change his/her post<br/>
 ✅ to delete his/her post<br/>
