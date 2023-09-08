@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block title %} Delete Blog Post {% endblock %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+    {% if user.id == post.author.id %}
+        <div class="form-group">
+            <form method="POST">
+                {% csrf_token %}
+                <div class="card alert-card">
+                    <div class="card-body">
+                        <h5 class="d-flex align-items-center">
+                            <i class='bx bx-trash pr-1 m-0 h4' style='color:#cb0a0a'></i>
+                            Are you sure?
+                        </h5>
+                        <p class="my-3">
+                            <strong>Attention:</strong> If you click on the delete button, your post <u>{{ post.title }}</u> will be deleted.!
+                        </p>
+                        <button class="btn btn-danger">Yes, delete it!</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    {% else %}
+        <div class="card alert-card">
+            <div class="card-body">
+              <h5 class="d-flex align-items-center"> <i class='bx bx-error pr-1 m-0 h4' style='color:#c1b601'></i>Hi {{ user.first_name }}!</h5>
+              <p class="my-3">You can't delete blog post of <i class="text-danger">{{ post.author.first_name }}</i>!</p>
+            </div>
+        </div>
+    {% endif %}
+{% else %}
+    <div class="card alert-card">
+        <div class="card-body">
+            <h5 class="d-flex align-items-center"> <i class='bx bx-error pr-1 m-0 h4' style='color:#c1b601'></i>Please, Login to start deleted your post!</h5>
+            <p class="my-3">Click <a href="{% url 'login' %}">here</a> to Login.</p>
+        </div>
+    </div>
+{% endif %}
+{% endblock %}

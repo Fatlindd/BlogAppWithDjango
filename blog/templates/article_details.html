@@ -1,0 +1,107 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} {{ post.title_tag }} {% endblock %}
+
+{% block content %}
+        <div class="d-flex justify-content-between m-0">
+            <h3 class="m-0" id="h4-tag">{{ post.title }}
+            <span class="d-flex align-items-center"  id="article-detail-style">
+                <i class='bx bx-user pr-1'></i>
+                    {{ post.author.first_name }} {{ post.author.last_name }}  |
+                <i class='bx bx-time px-1'></i> {{ post.post_date }}  |
+                <i class='bx bx-category px-1'></i>  {{ post.category }}
+            </span>
+    </div><hr>
+<br/>
+    <div class="row">
+        <div class="col-4 d-flex justify-content-center align-items-start mt-3">
+            <img src="{{ post.header_image.url }}" class="mx-auto d-block w-50">
+        </div>
+
+        <div class="col-8">
+            <p>{{ post.body|safe }}</p>
+            <form action="{% url 'like_post' post.pk %}" method="post">
+                {% csrf_token %}
+                {% if user.is_authenticated %}
+                    {% if liked %}
+                        <button type="submit" name="post_id" value="{{ post.id }}" class="btn btn-outline-danger btn-sm">
+                            <i class='bx bx-dislike m-0 h5'></i>
+                        </button>
+                    {% else %}
+                        <button type="submit" name="post_id" value="{{ post.id }}" class="btn btn-outline-primary btn-sm rounded">
+                            <i class='bx bx-like m-0 h5' ></i>
+                        </button>
+                    {% endif %}
+                {% else %}
+                    <div class="card alert-card">
+                        <div class="card-body">
+                            <p class="my-1"> Please, <a href="{% url 'login' %}"><b>Login</b></a> to like posts!</p>
+                        </div>
+                    </div>
+
+                {% endif %}
+            </form>
+            <hr>
+            <h5>Comments</h5>
+            <br/>
+
+            {% if not post.comments.all %}
+                {% if user.is_authenticated %}
+                    No comments yet! <a href="{% url 'add_comment' post.pk %}">Add One <i class='bx bx-message-dots h5'></i></a>
+                {% else %}
+                    <div class="card alert-card">
+                        <div class="card-body">
+                            <p class="my-1">Please <a href="{% url 'login' %}">login</a> to add new comment!</p>
+                        </div>
+                    </div>
+                {% endif %}
+            {% else %}
+                {% for comment in post.comments.all %}
+                    <div class="card mb-3">
+                      <div class="row g-0">
+                        <div class="col-md-2">
+                          <img src="{{ comment.by.profile.profile_pic.url }}" class="img-fluid rounded-start p-3" width="100px">
+                        </div>
+                        <div class="col-md-10">
+                          <div class="card-body">
+                            <h6 class="card-title">{{ comment.name }}</h6>
+                            <p class="card-text my-3" id="p-body-cards">{{ comment.body }}</p>
+
+                            <p class="card-text">
+                                <small class="text-muted">
+                                    <small id="small-tag">
+                                      {{ comment.by.first_name }} {{ comment.by.last_name }}
+                                    - {{ comment.date_added }}
+                                    </small>
+                                </small>
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                {% endfor %}
+            {% if user.is_authenticated %}
+                <a href="{% url 'add_comment' post.pk %}">Add New Comment <i class='bx bx-message-dots h5'></i></a>
+            {% else %}
+                    <div class="card alert-card">
+                        <div class="card-body">
+                            <p class="my-1">Please <a href="{% url 'login' %}">login</a> to add new comment!</p>
+                        </div>
+                    </div>
+
+            {% endif %}
+            {% endif %}
+        </div>
+    </div>
+
+    <hr>
+    {% if user.is_authenticated %}
+        {% if user.id == post.author.id %}
+            <div class="my-4">
+                <a class="btn btn-outline-success edit-delete-btn" href="{% url 'update_post' post.pk %}">Edit</a>
+                <a class="btn btn-outline-danger edit-delete-btn" href="{% url 'delete_post' post.pk %}">Delete</a><br/>
+            </div>
+        {% endif %}
+    {% endif %}
+<br/><br/>
+{% endblock %}

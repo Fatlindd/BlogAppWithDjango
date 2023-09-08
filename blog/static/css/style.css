@@ -1,0 +1,88 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+}
+
+.icon-font {
+    font-family: 'Audiowide', cursive;
+}
+
+/* To specify some space between footer and content */
+.container-padding {
+    padding-bottom: 7rem;
+}
+
+.navbar {
+    background-color: #1F618D;
+}
+
+#h4-tag {
+   font-family: 'Poppins', sans-serif;
+   font-weight: 500;
+   color: #1F618D;
+}
+
+#small-tag {
+   font-family: 'Poppins', sans-serif;
+   font-weight: 300;
+   color: #7B8FA1;
+}
+
+#p-body-cards {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    color: #1A5276;
+}
+
+.edit-delete-btn {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 300;
+    font-size: 15px;
+}
+
+.btn-card {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 300;
+}
+
+.post-card {
+    background-color: #FEFEFE;
+}
+
+.post-card:hover {
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
+.user-icon-login {
+    font-size: 25px;
+}
+.wrapper {
+  min-height: 100%;
+  position: relative;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #1F618D;
+  color: white;
+  box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.12);
+}
+
+.alert-card {
+    background-color: #FFF8DE;
+}
+
+#article-detail-style {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 300;
+    font-size: 15px;
+    color: #7B8FA1;
+}
+

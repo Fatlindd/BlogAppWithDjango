@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block title %} Login {% endblock %}
+
+{% block content %}
+<div class="form-group d-flex flex-column align-items-center justify-content-center">
+    <h3 id="h4-tag" class="text-left">Login Page</h3>
+    <br/>
+    <form method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+            <label>Username:</label>
+            <input type="text" class="form-control" name="username">
+        </div>
+        <div>
+            <label>Password:</label>
+            <input type="password" class="form-control" name="password">
+        </div>
+            <a href="{% url 'members:register' %}">
+            <p id="article-detail-style">Don't have an account? Sign up</p>
+        </a>
+        <button class="btn btn-secondary">Login</button>
+    </form>
+</div>
+{% endblock %}
